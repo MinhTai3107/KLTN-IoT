@@ -16,7 +16,7 @@ yolo_license_plate = torch.hub.load('yolov5', 'custom', path='model/LP_ocr_nano_
 yolo_license_plate.conf = 0.60
 
 # Open the webcam
-vid = cv2.VideoCapture(0)
+vid = cv2.VideoCapture(2)
 
 def gen_frames():
     while True:
@@ -52,9 +52,7 @@ def video_feed():
 
 @app.route('/capture', methods=['POST'])
 def capture():
-    capture_thread = threading.Thread(target=capture_image)
-    capture_thread.start()
-    capture_thread.join()  # Ensure capture process completes before responding
+     # Ensure capture process completes before responding
     return capture_image()
 
 if __name__ == "__main__":
